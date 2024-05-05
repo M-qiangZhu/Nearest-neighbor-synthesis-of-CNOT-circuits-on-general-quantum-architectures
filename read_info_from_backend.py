@@ -9,18 +9,18 @@
 
 from qiskit import IBMQ
 
-# 配置 IBM Quantum Experience 帐户
+# Configure an IBM Quantum Experience account
 IBMQ.save_account("86d1f23f0a57fefbd11e508ebf722ef6237238f854de5326079f82119b78904647bc56227ee39f6bf4433ba4f251d34e2a0afc12e60436f22ab3d1b8f9ebbafe")
 
-# 加载 IBMQ 后端
+# Load the IBMQ backend
 IBMQ.load_account()
 
-# 获取 "quito" 设备
+# Get the "quito" device
 provider = IBMQ.get_provider(hub='ibm-q')
 quito = provider.get_backend("ibmq_quito")
 
-# 获取设备的参数信息
+# Get device parameter information
 properties = quito.properties()
 
-# 打印所有参数信息
+# Print all parameter information
 print(properties)
