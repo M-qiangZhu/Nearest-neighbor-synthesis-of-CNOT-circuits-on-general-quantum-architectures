@@ -3,39 +3,38 @@
 """
     @Author kungfu
     @Date 2022/7/20 15:12
-    @Describe 使用Python中NetworkX包绘制深度神经网络结构图
+    @Describe Use the NetworkX package in Python to draw a deep neural network structure diagram
     @Version 1.0
 """
-# 导入相应包
+
 import networkx as nx
 from networkx.algorithms import approximation
 import matplotlib.pyplot as plt
 
 
-# 绘制DAG图
+# Draw DAG diagram
 def draw_graph(G, pos):
-    # figsize:指定figure的宽和高，单位为英寸
     plt.figure(figsize=(20, 20), dpi=200)
-    # plt.title('Network Structure')  # 神经网络结构图标题
-    # plt.xlim(-10, 170)  # 设置X轴坐标范围
-    # plt.ylim(-10, 150)  # 设置Y轴坐标范围
+    # plt.title('Network Structure')  # Neural network structure diagram title
+    # plt.xlim(-10, 170)  # Set the X-axis coordinate range
+    # plt.ylim(-10, 150)  # Set the Y-axis coordinate range
     nx.draw(
         G,
-        pos=pos,  # 点的位置
-        node_color='#2D3EB7',  # 顶点颜色
-        edge_color='black',  # 边的颜色
-        font_color='#FFF',  # 字体颜色
-        font_size=40,  # 文字大小
-        font_family='Arial Unicode MS',  # 字体样式
-        node_size=5000,  # 顶点大小
-        with_labels=True,  # 显示顶点标签
-        width=8.0,  # 边的宽度
-        linewidths=8.0,  # 线宽
+        pos=pos,
+        node_color='#2D3EB7',
+        edge_color='black',
+        font_color='#FFF',
+        font_size=40,
+        font_family='Arial Unicode MS',
+        node_size=5000,
+        with_labels=True,
+        width=8.0,
+        linewidths=8.0,
     )
-    # 保存图片，图片大小为640*480
+    # save image
     plt.savefig('/Users/kungfu/Desktop/graph.png')
 
-    # 显示图片
+    # show image
     plt.show()
 
 
@@ -488,32 +487,11 @@ class WuKong_new:
 
 
 def test_st1():
-    """ 测试Steiner树1 """
-    # ver = ['0', '1', '2', '3', '4']
-    # edges = [('0', '1'), ('1', '2'), ('1', '3'), ('3', '4')]
-    # pos = {'0': [0, 0], '1': [2, 0], '2': [4, 0], '3': [2, -2], '4': [2, -4]}
+    """ test Steiner tree 1 """
 
-    # ver = [0, 1, 2, 3, 4]
-    # edges = [(0, 1), (1, 2), (1, 3), (3, 4)]
-    # pos = {0: [0, 0], 1: [2, 0], 2: [4, 0], 3: [2, -2], 4: [2, -4]}
-    # graph = nx.Graph()
-    # graph.add_nodes_from(ver)
-    # graph.add_edges_from(edges)
-    # draw_graph(graph, pos)
-    # nx.draw(graph)
-    # plt.show()
-    # tree = graph.subgraph([0, 1, 4])
-    # print(tree.edges)
-
-    # G = nx.dodecahedral_graph()
-    # nx.draw(G)
-    # nx.draw(G, pos=nx.spring_layout(G))  # use spring layout
-    # limits = plt.axis("off")  # turn off axis
-    # plt.show()
 
     ibmq_quito = IbmQuito()
     graph = ibmq_quito.get_graph()
-    # draw_graph(graph, ibmq_quito.pos)
     ibmq_quito.draw_graph()
     print(graph.degree[0])
     print(graph.degree[1])
@@ -527,7 +505,7 @@ def test_st1():
 
 
 def test_st2():
-    """ 测试Steiner树2 """
+    """ test Steiner tree 2 """
     ibmq_quito = IbmQuito()
     graph = ibmq_quito.get_graph()
     nodes = list(graph.nodes)
