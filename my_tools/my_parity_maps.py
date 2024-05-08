@@ -11,7 +11,7 @@ debug = False
 class CNOT_tracker(Circuit):
     def __init__(self, n_qubits, **kwargs):
         super().__init__(n_qubits, **kwargs)
-        self.matrix = Mat2(np.identity(n_qubits, dtype=np.int32).tolist())  # 生成一个恒等矩阵/单位矩阵
+        self.matrix = Mat2(np.identity(n_qubits, dtype=np.int32).tolist())  # Generate an identity matrix/identity matrix
         self.row_perm = np.arange(n_qubits)
         self.col_perm = np.arange(n_qubits)
         self.n_qubits = n_qubits
@@ -63,17 +63,17 @@ class CNOT_tracker(Circuit):
         new_circuit.gates = circuit.gates
         new_circuit.update_matrix()
 
-        debug and print("new_circuit如下:")
+        debug and print("new_circuit:")
         debug and print(new_circuit.matrix)
-        print("new_circuit如下:")
+        print("new_circuit:")
         print(new_circuit.matrix)
 
         return new_circuit
 
     def update_matrix(self):
-        self.matrix = Mat2(np.identity(self.n_qubits))  # 返回一个 n_qubits * n_qubits 的矩阵
+        self.matrix = Mat2(np.identity(self.n_qubits))  # Return a matrix of n_qubits * n_qubits
         for gate in self.gates:
-            if hasattr(gate, "name") and gate.name == "CNOT":  # hasattr() 函数用于判断对象是否包含对应的属性
+            if hasattr(gate, "name") and gate.name == "CNOT":  # The hasattr() function is used to determine whether an object contains corresponding attributes
                 self.matrix.row_add(gate.control, gate.target)
             else:
                 print("Warning: CNOT tracker can only be used for circuits with only CNOT gates!")

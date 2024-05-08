@@ -39,13 +39,13 @@ def test02():
     sort_edges = sorted(edges, key=lambda x: x[0])
     print(sort_edges)
 
-    # 将有向边转换为无向边
+    # Convert directed edges to undirected edges
     undirected_edges = set()
     for edge in sort_edges:
         undirected_edges.add(frozenset(edge))
         undirected_edges.add(frozenset(reversed(edge)))
 
-    # 输出无向边集合
+    # Output undirected edge set
     print(len(undirected_edges))
     new_edges = []
     for u_e in undirected_edges:
@@ -76,22 +76,22 @@ def row_add(row1, row2):
     """Add r0 to r1"""
     for i, v in enumerate(row1):
         if v:
-            row2[i] = 0 if row2[i] else 1  # 当row1中某个值为1时, 将row2中的对应位置的值取反
+            row2[i] = 0 if row2[i] else 1  # When a value in row1 is 1, invert the value of the corresponding position in row2
     return row2
 
 
 def get_row(m, row_index):
     """
-    根据矩阵获取指定的行
-    :param m: 矩阵
-    :param row_index: 需要获取的行的索引
+    Get the specified row from the matrix
+    :param m: matrix
+    :param row_index: The index of the row to be obtained
     :return:
     """
     return m.data[row_index, :].tolist()
 
 
 def find_set_j(m, tar_row_index, row_tar, ei):
-    # 根据目标行, 生成待遍历的列表
+    # generate list from target row
     length = m.rank()
     all_set = []
     print()
@@ -131,20 +131,18 @@ if __name__ == '__main__':
 #         dict[i+55] = [2*i+2, -16]
 #     print(dict)
 
-    # print('0'*27)
+# print('0'*27)
 
-    # dict = {}
-    # for i in range(5):
-    #     dict[i] = [2*i, 0]
-    # print(dict)
-    # for i in range(5):
-    #     dict[i+5] = [2*i, -2]
-    # print(dict)
-    # for i in range(5):
-    #     dict[i+10] = [2*i, -4]
-    # print(dict)
-    # for i in range(5):
-    #     dict[i+15] = [2*i, -6]
-    # print(dict)
-
-
+# dict = {}
+# for i in range(5):
+#     dict[i] = [2*i, 0]
+# print(dict)
+# for i in range(5):
+#     dict[i+5] = [2*i, -2]
+# print(dict)
+# for i in range(5):
+#     dict[i+10] = [2*i, -4]
+# print(dict)
+# for i in range(5):
+#     dict[i+15] = [2*i, -6]
+# print(dict)
